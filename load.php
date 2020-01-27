@@ -9,3 +9,4 @@ define('ADMIN_SCRIPT_PATH', ADMIN_PATH.'/scripts');
 // load the database connection
 require_once ABSPATH.'/config/database.php';
 require_once ADMIN_SCRIPT_PATH.'/read.php';
+require_once ADMIN_SCRIPT_PATH.'/login.php';
