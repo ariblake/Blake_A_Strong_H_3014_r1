@@ -1,7 +1,10 @@
 <?php
     require_once '../load.php';
 
-    $ip = $_SERVER['REMOTE_ADDR'];
+    // $_UPPERCASE means this is a built in PHP variable
+    // php.net has a manual that explains these variables
+    // $word is a variable made by us
+    $ip = $_SERVER['REMOTE_ADDR']; //REMOTE_ADDR uses the IP address from the user
 
     if(isset($_POST['submit'])){
         // trim cuts off extra space
@@ -11,7 +14,7 @@
         // if any are empty, instead of logging the user in, send a message
         if(!empty($username) && !empty($password)){
             // log user in
-            $message = login($username, $password);
+            $message = login($username, $password, $ip);
         }else{
             $message = 'Please fill out the required fields';
         }
