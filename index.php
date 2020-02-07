@@ -1,25 +1,21 @@
 <?php
-require_once 'load.php';
+    require_once 'load.php';
 
-// var_dump($getMovies);exit;
+    $ip = $_SERVER['REMOTE_ADDR']; //REMOTE_ADDR uses the IP address from the user
 
-if(isset($_GET['filter'])) {
-    //Filter movies by genre
-    $args = array(
-        'tbl'=>'tbl_movies',
-        'tbl2' =>'tbl_genre',
-        'tbl3'=>'tbl_mov_genre',
-        'col'=>'movies_id',
-        'col2'=>'genre_id',
-        'col3'=>'genre_name',
-        'filter'=>$_GET['filter']
-    );
-    $getMovies = getMoviesByFilter($args);
-}else{
-    $movie_table = 'tbl_movies';
-    $getMovies = getAll($movie_table);
-}
+    if(isset($_POST['submit'])){
+        // trim cuts off extra space
+        $username = trim($_POST['username']);
+        $password = trim($_POST['password']);
 
+        // if any are empty, instead of logging the user in, send a message
+        if(!empty($username) && !empty($password)){
+            // log user in
+            $message = login($username, $password, $ip, $time);
+        }else{
+            $message = 'Please fill out the required fields';
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -28,21 +24,21 @@ if(isset($_GET['filter'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Welcome to the Movie CMS!</title>
+    <title>Login Page</title>
 </head>
 <body>
-    <?php include 'templates/header.php';?>
+    <h2>Login Page</h2>
+    <?php echo !empty($message)? $message: ''; ?>
+    <form action="index.php" method="post">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" value="">
 
-    <?php while($row = $getMovies->fetch(PDO::FETCH_ASSOC)):?>
-        <div class="movie-item">
-            <img src="images/<?php echo $row['movies_cover'];?>" alt="<?php echo $row['movies_title'];?>">
-            <h2><?php echo $row['movies_title'];?></h2>
-            <h4>Movie Released: <?php echo $row['movies_year'];?></h4>
-            <a href="details.php?id=<?php echo $row['movies_id'];?>"> Read More</a>
-        </div>
-    <?php endwhile;?>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" value="">
 
-    <?php include 'templates/footer.php';?>
-    
+        <button name="submit">Submit</button>
+    </form>
+
+
 </body>
 </html>

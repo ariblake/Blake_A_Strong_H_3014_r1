@@ -1,0 +1,5 @@
+References:
+
+Used to figure out how to find the current time:
+https://www.w3schools.com/php/php_date.asp
+
