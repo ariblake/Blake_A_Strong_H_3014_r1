@@ -21,7 +21,7 @@
     }
 
     // Last successful login
-    setcookie('lastLogin', date("G:i - m/d/y"));
+    setcookie('lastLogin', date("l jS \of F Y h:i:s A"));
 
     // Use a cookie to store the user data of date and time in the last login field
     if(isset($_COOKIE['lastLogin'])){

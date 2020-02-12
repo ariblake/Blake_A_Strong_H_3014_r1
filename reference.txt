@@ -1,5 +1,19 @@
 References:
 
+Overall documentation reference:
+https://www.php.net/docs.php and https://websitesetup.org/php-cheat-sheet/
+
 Used to figure out how to find the current time:
 https://www.w3schools.com/php/php_date.asp
 
+How to set the timezone of EST:
+https://www.php.net/manual/en/function.date-default-timezone-set.php
+
+Help on how to use sessions:
+https://www.w3schools.com/php/php_sessions.asp
+
+Login help with sessions:
+https://www.tutorialrepublic.com/php-tutorial/php-mysql-login-system.php
+
+Helped with figuring out login count and lockout:
+http://fulltotech.info/2019/02/limit-number-of-login-attempt-using-php-mysql/
