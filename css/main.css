@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
+    background-color: lightblue;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+form {
+    padding: 5px;
+}
+
+form input {
+    border-radius: 2px;
+    border: solid black 1px;
+    padding: 10px 15px 10px 15px;
+    margin-right: 20px;
+    margin-left: 5px;
+}
+
+form button {
+    margin-left: 15px;
+    background-color: black;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 15px;
+    padding: 10px 20px 10px 20px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: darkslategray;
+    transform: ease-in 2s;
+}

@@ -8,9 +8,10 @@ class Database
 
     private $username = "root";
 
-    private $password = "";
+    private $password = "root";
 
     private static $instance = null;
+   
     public $conn;
 
     private function __construct(){
@@ -40,14 +41,14 @@ class Database
         }
     }
 
-    // get the database connection
+    // Get the database connection
     public function getConnection()
     {
         return $this->conn;
     }
 
-    // this is a design pattern - makes sure our code is structured properly to run the most efficient way
-    // this one avoids doing the same thing again - reuses the same database instead of creating a new one each time
+    // This is a design pattern - makes sure our code is structured properly to run the most efficient way
+    // This one avoids doing the same thing again - reuses the same database instead of creating a new one each time
     public static function getInstance(){
         if(!self::$instance){
             self::$instance = new Database();
