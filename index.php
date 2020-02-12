@@ -1,21 +1,26 @@
 <?php
     require_once 'load.php';
 
-    $ip = $_SERVER['REMOTE_ADDR']; //REMOTE_ADDR uses the IP address from the user
+    // Start a session once page loads
+    session_start();
+
+    $ip = $_SERVER['REMOTE_ADDR']; // REMOTE_ADDR uses the IP address from the user
 
     if(isset($_POST['submit'])){
-        // trim cuts off extra space
+        // Trim cuts off extra space typed
         $username = trim($_POST['username']);
         $password = trim($_POST['password']);
 
-        // if any are empty, instead of logging the user in, send a message
+        // If any are empty, instead of logging the user in, send a message
         if(!empty($username) && !empty($password)){
-            // log user in
-            $message = login($username, $password, $ip, $time);
+            // Log user in
+            $message = login($username, $password, $ip);
         }else{
             $message = 'Please fill out the required fields';
         }
     }
+
+    echo 'Number of login attempts: '.$_SESSION['login-attempts'];
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +29,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/main.css">
     <title>Login Page</title>
 </head>
 <body>
